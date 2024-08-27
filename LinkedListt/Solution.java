@@ -1,7 +1,8 @@
 public class Solution {
 
     public static void main(String[] args) {
-        LinkedList l = LinkedList.fromArray(new int[]{0,1,2,3});
+        LinkedList l = LinkedList.fromArray(new int[]{1,2,3});
+        LinkedList l2 = LinkedList.fromArray(new int[]{1,2,3});
         // l.printList();
         // System.out.println(l.length());
         // int[] arr = l.toArray();
@@ -13,7 +14,9 @@ public class Solution {
         // l.removeAtEnd();
         // l.removeAtIndex(0);
         // l.printList();
-        Integer s = l.getIndex(1);
-        System.err.println(s);
+        // Integer s = l.getIndex(1);
+        LinkedList list = LinkedListUtil.mergeLinkedList(l, l2);
+        list.printList();
+
     }
 }

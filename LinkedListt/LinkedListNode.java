@@ -1,4 +1,3 @@
-
 public class LinkedListNode {
     public Integer data;
     public LinkedListNode next;
