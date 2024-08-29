@@ -14,17 +14,19 @@ public class LinkedList {
         this.head = head;
     }
 
-    public Integer getIndex(int index){
-        if(head == null){
+    public Integer getIndex(int index) {
+        if (head == null) {
             return null;
         }
         LinkedListNode head = this.head;
-        // As we are updating the next in the loop in each iteration the head will be at iteration + 1 if we start from zero
-        for(int i = 1; i <= index ; i++){
+        // As we are updating the next in the loop in each iteration the head will be at
+        // iteration + 1 if we start from zero
+        for (int i = 1; i <= index; i++) {
             head = head.next;
         }
         return head.data;
     }
+
     // O(1)
     public void insertAtStart(int data) {
         LinkedListNode newNode = new LinkedListNode(data);
@@ -84,7 +86,7 @@ public class LinkedList {
         if (head == null) {
             return;
         }
-        if(index == 0){
+        if (index == 0) {
             removeAtStart();
             return;
         }
@@ -93,6 +95,19 @@ public class LinkedList {
             head = head.next;
         }
         head.next = head.next.next;
+    }
+
+    public LinkedList reversed() {
+        LinkedListNode current = this.head;
+        LinkedListNode prev = null;
+        while (current != null) {
+            LinkedListNode next = current.next;
+            current.next =prev;
+            prev =current;
+            current = next;
+        }
+
+        return new LinkedList(current);
     }
 
     public static LinkedList fromArray(final int[] arr) {
