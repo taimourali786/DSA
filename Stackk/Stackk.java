@@ -4,10 +4,12 @@ import java.lang.reflect.Array;
 public class Stackk<T> {
     private T[] stack;
     private int top;
+    private int size;
 
     public Stackk(int size, Class<T> clazz) {
         this.stack = (T[]) Array.newInstance(clazz, size);
-        top = 0;
+        this.top = 0;
+        this.size = size;
     }
 
     // O(1)
@@ -35,7 +37,7 @@ public class Stackk<T> {
     }
 
     public boolean isFull() {
-        return stack.length - 1 == top;
+        return size - 1 == top;
     }
 
     public boolean isEmpty() {
