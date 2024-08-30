@@ -48,11 +48,15 @@ public class LinkedList {
 
     // O(n)
     public void insertAtIndex(int data, int index) {
-        if (index > length() - 1) {
+        if (index > length()) {
+            return;
+        }
+        if (index == 0) {
+            this.insertAtStart(data);
             return;
         }
         LinkedListNode head = this.head;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index - 1; i++) {
             head = head.next;
         }
         LinkedListNode node = new LinkedListNode(data);
@@ -102,8 +106,8 @@ public class LinkedList {
         LinkedListNode prev = null;
         while (current != null) {
             LinkedListNode next = current.next;
-            current.next =prev;
-            prev =current;
+            current.next = prev;
+            prev = current;
             current = next;
         }
 
