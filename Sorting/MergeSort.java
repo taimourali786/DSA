@@ -3,39 +3,44 @@ package Sorting;
 public class MergeSort {
 
     public static void merge(int[] arr, int left, int middle, int right) {
-        int l1 = middle - left + 1;
-        int l2 = right - middle;
+        int lowerIndexArray1 = left;
+        int lowerIndexArray2 = middle + 1;
+        int array1Length = middle - left + 1;
+        int array2Length = right - middle ;
+        int[] subArray1 = new int[array1Length];
+        int[] subArray2 = new int[array2Length];
 
-        int[] L = new int[l1];
-        int[] R = new int[l2];
+        for (int i = 0; i <= array1Length - 1; i++) {
+            subArray1[i] = arr[lowerIndexArray1 + i];
+        }
 
-        for (int i = 0; i < l1; i++) {
-            L[i] = arr[left + i];
+        for (int i = 0; i <= array2Length - 1; i++) {
+            subArray2[i] = arr[lowerIndexArray2 + i];
         }
-        for (int j = 0; j < l2; j++) {
-            R[j] = arr[middle + 1 + j];
-        }
-        int p1 = 0, p2 = 0, k = left;
-        while (p1 < l1 && p2 < l2) {
-            if (L[p1] <= R[p2]) {
-                arr[k] = L[p1];
-                p1++;
+        int runningIndexArray1 = 0, runningIndexArray2 = 0, mainArrayIndex = left;
+        while (runningIndexArray1 < array1Length && runningIndexArray2 < array2Length) {
+            if(subArray1[runningIndexArray1] <= subArray2[runningIndexArray2]) {
+                arr[mainArrayIndex] = subArray1[runningIndexArray1];
+                runningIndexArray1++;
             } else {
-                arr[k] = R[p2];
-                p2++;
+                arr[mainArrayIndex] = subArray2[runningIndexArray2];
+                runningIndexArray2++;
             }
-            k++;
+            mainArrayIndex++;
         }
-        while (p1 < l1) {
-            arr[k] = L[p1];
-            k++;
-            p1++;
+
+        while(runningIndexArray1 < array1Length) {
+            arr[mainArrayIndex] = subArray1[runningIndexArray1];
+            runningIndexArray1++;
+            mainArrayIndex++;
         }
-        while (p2 < l2) {
-            arr[k] = R[p2];
-            k++;
-            p2++;
+
+        while (runningIndexArray2 < array2Length) {
+            arr[mainArrayIndex] = subArray2[runningIndexArray2];
+            runningIndexArray2++;
+            mainArrayIndex++;
         }
+
     }
 
     public static void mergeSort(int[] arr, int left, int right) {
