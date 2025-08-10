@@ -1,3 +1,5 @@
+package Sorting;
+
 public class QuickSort {
 
     private static void swap(int[] arr, int i1, int i2) {
